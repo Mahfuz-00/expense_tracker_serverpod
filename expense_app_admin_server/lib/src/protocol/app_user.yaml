@@ -1,0 +1,5 @@
+class: AppUser
+fields:
+  id: String
+  email: String
+  createdAt: DateTime

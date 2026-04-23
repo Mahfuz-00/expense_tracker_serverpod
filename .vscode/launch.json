@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "expense_app_admin_flutter",
+            "cwd": "${workspaceFolder}/expense_app_admin_flutter",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "expense_app_admin_server",
+            "cwd": "${workspaceFolder}/expense_app_admin_server",
+            "request": "launch",
+            "type": "dart",
+            "preLaunchTask": "docker_compose_up",
+            "program": "bin/main.dart",
+            "env": {
+                "SERVERPOD_PASSWORD_database": "u-WBO6gHskGKRxWCFEiPAIGbNUdyUCxs"
+            },
+            "args": [
+                "--apply-migrations"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "expense_app_admin (full stack)",
+            "configurations": [
+                "expense_app_admin_server",
+                "expense_app_admin_flutter"
+            ],
+            "presentation": {
+                "order": 1
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+name: _
+publish_to: none
+
+environment:
+  sdk: '^3.8.0'
+
+workspace:
+  - expense_app_admin_client
+  - expense_app_admin_server
+  - expense_app_admin_flutter
+

@@ -1,0 +1,5 @@
+class: BudgetNotification
+fields:
+  title: String
+  message: String
+  isOverspending: bool

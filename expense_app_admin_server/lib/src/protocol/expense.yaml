@@ -1,0 +1,8 @@
+class: Expense
+fields:
+  id: String
+  userId: String
+  amount: double
+  category: String
+  description: String?
+  createdAt: DateTime

@@ -1,0 +1,8 @@
+# config/development.yaml
+apiServer:
+  port: 8080
+  publicHost: 10.0.2.2 # or your local IP
+  publicPort: 8080
+  publicScheme: http
+  # Force binding to all interfaces so the emulator can bridge in
+  address: 0.0.0.0
