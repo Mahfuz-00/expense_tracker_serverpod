@@ -19,14 +19,12 @@ import 'package:serverpod_auth_core_server/serverpod_auth_core_server.dart'
 import 'app_user.dart' as _i5;
 import 'budget_notification.dart' as _i6;
 import 'expense.dart' as _i7;
-import 'greetings/greeting.dart' as _i8;
-import 'user_identity.dart' as _i9;
-import 'package:expense_app_admin_server/src/generated/app_user.dart' as _i10;
-import 'package:expense_app_admin_server/src/generated/expense.dart' as _i11;
+import 'user_identity.dart' as _i8;
+import 'package:expense_app_admin_server/src/generated/app_user.dart' as _i9;
+import 'package:expense_app_admin_server/src/generated/expense.dart' as _i10;
 export 'app_user.dart';
 export 'budget_notification.dart';
 export 'expense.dart';
-export 'greetings/greeting.dart';
 export 'user_identity.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
@@ -78,11 +76,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i7.Expense) {
       return _i7.Expense.fromJson(data) as T;
     }
-    if (t == _i8.Greeting) {
-      return _i8.Greeting.fromJson(data) as T;
-    }
-    if (t == _i9.UserIdentity) {
-      return _i9.UserIdentity.fromJson(data) as T;
+    if (t == _i8.UserIdentity) {
+      return _i8.UserIdentity.fromJson(data) as T;
     }
     if (t == _i1.getType<_i5.AppUser?>()) {
       return (data != null ? _i5.AppUser.fromJson(data) : null) as T;
@@ -93,18 +88,15 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i7.Expense?>()) {
       return (data != null ? _i7.Expense.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i8.Greeting?>()) {
-      return (data != null ? _i8.Greeting.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i8.UserIdentity?>()) {
+      return (data != null ? _i8.UserIdentity.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i9.UserIdentity?>()) {
-      return (data != null ? _i9.UserIdentity.fromJson(data) : null) as T;
-    }
-    if (t == List<_i10.AppUser>) {
-      return (data as List).map((e) => deserialize<_i10.AppUser>(e)).toList()
+    if (t == List<_i9.AppUser>) {
+      return (data as List).map((e) => deserialize<_i9.AppUser>(e)).toList()
           as T;
     }
-    if (t == List<_i11.Expense>) {
-      return (data as List).map((e) => deserialize<_i11.Expense>(e)).toList()
+    if (t == List<_i10.Expense>) {
+      return (data as List).map((e) => deserialize<_i10.Expense>(e)).toList()
           as T;
     }
     try {
@@ -124,8 +116,7 @@ class Protocol extends _i1.SerializationManagerServer {
       _i5.AppUser => 'AppUser',
       _i6.BudgetNotification => 'BudgetNotification',
       _i7.Expense => 'Expense',
-      _i8.Greeting => 'Greeting',
-      _i9.UserIdentity => 'UserIdentity',
+      _i8.UserIdentity => 'UserIdentity',
       _ => null,
     };
   }
@@ -149,9 +140,7 @@ class Protocol extends _i1.SerializationManagerServer {
         return 'BudgetNotification';
       case _i7.Expense():
         return 'Expense';
-      case _i8.Greeting():
-        return 'Greeting';
-      case _i9.UserIdentity():
+      case _i8.UserIdentity():
         return 'UserIdentity';
     }
     className = _i2.Protocol().getClassNameForObject(data);
@@ -184,11 +173,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName == 'Expense') {
       return deserialize<_i7.Expense>(data['data']);
     }
-    if (dataClassName == 'Greeting') {
-      return deserialize<_i8.Greeting>(data['data']);
-    }
     if (dataClassName == 'UserIdentity') {
-      return deserialize<_i9.UserIdentity>(data['data']);
+      return deserialize<_i8.UserIdentity>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);

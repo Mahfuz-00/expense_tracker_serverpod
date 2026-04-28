@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import 'package:expense_app_admin_server/src/web/routes/expenses_route.dart';
+import 'package:expense_app_admin_server/src/features/admin/web_view/users_route.dart';
+import 'package:expense_app_admin_server/src/features/dashboard/web_view/root_route.dart';
+import 'package:expense_app_admin_server/src/features/expenses/web/expenses_route.dart';
 import 'package:expense_app_admin_server/src/web/routes/settings_route.dart';
-import 'package:expense_app_admin_server/src/web/routes/users_route.dart';
 import 'package:serverpod/serverpod.dart';
 import 'package:serverpod_auth_idp_server/core.dart';
 import 'package:serverpod_auth_idp_server/providers/email.dart';
@@ -10,7 +11,6 @@ import 'package:serverpod_auth_idp_server/providers/email.dart';
 import 'src/generated/endpoints.dart';
 import 'src/generated/protocol.dart';
 import 'src/web/routes/app_config_route.dart';
-import 'src/web/routes/root.dart';
 
 /// The starting point of the Serverpod server.
 void run(List<String> args) async {
@@ -35,13 +35,24 @@ void run(List<String> args) async {
   );
 
   // Setup a default page at the web root.
-  // These are used by the default page.
+  // // These are used by the default page.
+  // pod.webServer.addRoute(RootRoute(), '/');
+  // pod.webServer.addRoute(RootRoute(), '/index.html');
+  //
+  // // Register the route
+  // pod.webServer.addRoute(UsersRoute(), '/users');
+  // pod.webServer.addRoute(ExpensesRoute(), '/expenses');
+  // pod.webServer.addRoute(SettingsRoute(), '/settings');
+
+  // --- Web Server Routes Setup ---
+
+  // 1. Dashboard / Root
   pod.webServer.addRoute(RootRoute(), '/');
   pod.webServer.addRoute(RootRoute(), '/index.html');
 
-  // Register the route
+  // 2. Feature Routes (Clean Architecture paths)
   pod.webServer.addRoute(UsersRoute(), '/users');
-  pod.webServer.addRoute(ExpensesRoute(), '/expenses');
+  pod.webServer.addRoute(ExpensesRoute(), '/expenses'); // Now points to features/expenses/web_view
   pod.webServer.addRoute(SettingsRoute(), '/settings');
 
   // Serve all files in the web/static relative directory under /.

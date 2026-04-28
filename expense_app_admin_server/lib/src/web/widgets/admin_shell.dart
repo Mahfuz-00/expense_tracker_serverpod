@@ -28,7 +28,6 @@ class AdminShell extends WebWidget {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); display: flex; min-height: 100vh; }
         
-        /* Sidebar */
         .sidebar { width: 280px; background: var(--sidebar); color: white; display: flex; flex-direction: column; position: fixed; height: 100vh; }
         .logo { padding: 2rem; font-size: 1.5rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 10px; }
         .logo span { color: var(--primary); }
@@ -40,18 +39,27 @@ class AdminShell extends WebWidget {
         .nav-item:hover { background: rgba(255,255,255,0.05); color: white; }
         .nav-item.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
 
-        /* Main Content */
         .main { flex: 1; margin-left: 280px; padding: 2.5rem; }
-        .header { margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: center; }
-        .card { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .header { margin-bottom: 2.5rem; }
         
-        /* Tables */
+        /* DASHBOARD UI FIXES */
+        .info-box { background: white; padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); }
+        .info-box h3 { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .info-box .val { font-size: 1.5rem; font-weight: 700; }
+        
+        .card-white { background: white; padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); }
+        
+        .mini-card { 
+            background: white; padding: 1rem; border-radius: 12px; border: 1px solid var(--border); 
+            margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .cat-label { font-weight: 600; font-size: 0.9rem; }
+        .cat-amt { color: var(--primary); font-weight: 700; }
+        .scroll-stack { max-height: 400px; overflow-y: auto; padding-right: 5px; }
+
         table { width: 100%; border-collapse: collapse; }
-        th { background: #fcfcfd; padding: 1rem; text-align: left; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+        th { background: #fcfcfd; padding: 1rem; text-align: left; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border); }
         td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-        tr:last-child td { border-bottom: none; }
-        tr:hover { background: #f8fafc; }
-        .badge { padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; background: #e0e7ff; color: #4338ca; }
     </style>
 </head>
 <body>
@@ -65,12 +73,8 @@ class AdminShell extends WebWidget {
         </nav>
     </div>
     <div class="main">
-        <div class="header">
-            <h1>$title</h1>
-        </div>
-        <div class="card">
-            $content
-        </div>
+        <div class="header"><h1>$title</h1></div>
+        <div class="content-wrapper">$content</div>
     </div>
 </body>
 </html>
